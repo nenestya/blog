@@ -29,30 +29,24 @@
                                                 </div>
                                             {!! Form::close() !!} 
                                     </div>
-
+                                    
                                     <div class="row">
-                                        <div class="col-md-9" style="position:relative;">
-                                            <span style="position:absolute;max-width: 15%;,ax-height: 15%;padding: 10px;text-align: center">tes</span>
-                                            <img src="{{asset('img/blog/sb.png')}}" alt="" style="max-width:100%">
-                                            <small>Posted by Admin <span style="color: red">Nestya</span></small>
                                             @foreach ($posts as $post)
-                                            <div class="col-md-12">
-                                                SEMUABISA CINEMA <br>
+                                        <div class="col-md-9" style="position:relative;">
+                                            
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    Name user
+                                                </div>
+                                            </div>
+                                            <div class="col-md-10">
                                                 <p style="text-indent: 25px;text-align: justify">
                                                     {{$post->post}}
                                                 </p>
                                             </div>
-                                            @endforeach
+                                            
                                             <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3" style="text-align: center">
-                                                        <label for="nama">Nama</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <br>
+                                        
                                                 <div class="row">
                                                     <div class="col-md-3" style="text-align: center">
                                                         <label for="nama">Komentar</label>
@@ -84,6 +78,7 @@
                                                 </div><br>
                                             </div>
                                         </div>
+                                        @endforeach
                                         <div class="col-md-3">
                                             <span style="font-size: 30px">LATEST POST</span><hr>
                                             <div style="margin:1em;">
