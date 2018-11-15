@@ -15,7 +15,6 @@
                                                 @elseif (Session::has('create_post_fail'))
                                             
                                                 <div class="alert alert-danger">{{ Session('create_post_fail') }}</div>
-                                            
                                                 @endif
                                             </div>
                                     <div class="container-fluid">
@@ -34,31 +33,19 @@
                                             @foreach ($posts as $post)
                                         <div class="col-md-9" style="position:relative;">
                                             
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    Name user
-                                                </div>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <p style="text-indent: 25px;text-align: justify">
-                                                    {{$post->post}}
-                                                </p>
-                                            </div>
-                                            
-                                            <div class="form-group">
+                                            <div class="card">
+                                                    <div class="card-header">
+                                                      Quote
+                                                    </div>
+                                                    <div class="card-body">
+                                                      <blockquote class="blockquote mb-0">
+                                                            {{$post->post}}
+                                                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                                      </blockquote>
+                                                    </div>
+                                                  </div>
+                                            <br><br>
                                         
-                                                <div class="row">
-                                                    <div class="col-md-3" style="text-align: center">
-                                                        <label for="nama">Komentar</label>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <textarea name="" id="" rows="5" class="form-control"></textarea>
-                                                    </div>
-                                                </div><br>
-                                                <div class="pull-right">
-                                                    <input type="button" value="Post" class="btn btn-primary btn-sm">
-                                                </div>
-                                            </div>
                                             <div class="col-md-12">
                                                 <span style="font-size: 25px;font-weight: bold">21 Comment</span>
                                                 <div class="row">
@@ -77,19 +64,23 @@
                                                     </div>
                                                 </div><br>
                                             </div>
+                                            <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-2" style="text-align: center">
+                                                            <label for="nama">Komentar</label>
+                                                        </div>
+                                                        <div class="col-md-10">
+                                                            <textarea name="" id="" rows="5" class="form-control"></textarea>
+                                                            <br>
+                                                            <div class="pull-right">
+                                                                    <input type="button" value="Post" class="btn btn-primary btn-sm">
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
                                         </div>
                                         @endforeach
-                                        <div class="col-md-3">
-                                            <span style="font-size: 30px">LATEST POST</span><hr>
-                                            <div style="margin:1em;">
-                                                <img src="{{asset('img/blog/lates_post.png')}}" alt="" srcset="" style="max-width:100%;"><br>
-                                                <small>Camera digunakan banyak orang untuk ...</small>
-                                            </div>
-                                            <div style="margin:1em;">
-                                                <img src="{{asset('img/blog/lates_post.png')}}" alt="" srcset="" style="max-width:100%;"><br>
-                                                <small>Camera digunakan banyak orang untuk ...</small>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </section>

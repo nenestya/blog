@@ -48,7 +48,7 @@ class PostController extends Controller
             return redirect()->route('post.index');
           }
           catch (\Exception $e) {
-            Session::flash('create_post_fail',$e);
+            Session::flash('create_post_fail','Status gagal Ditambahkan');
             return redirect()->route('post.index');
           }
     }
