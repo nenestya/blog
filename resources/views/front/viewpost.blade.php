@@ -7,6 +7,17 @@
         <div class="row">
                         <section class="our_project_area">
                                 <div class="container" style="padding-left:50px">
+                                        <div class="contianer">
+                                                @if (Session::has('create_post_success'))
+    
+                                                <div class="alert alert-success">{{ Session('create_post_success') }}</div>
+                                            
+                                                @elseif (Session::has('create_post_fail'))
+                                            
+                                                <div class="alert alert-danger">{{ Session('create_post_fail') }}</div>
+                                            
+                                                @endif
+                                            </div>
                                     <div class="container-fluid">
                                             {!! Form::open(['method'=>'post', 'action'=>'PostController@store','files'=>'true']) !!}
                                             <div class="form-group">
@@ -28,7 +39,7 @@
                                             <div class="col-md-12">
                                                 SEMUABISA CINEMA <br>
                                                 <p style="text-indent: 25px;text-align: justify">
-                                                    {{$posts}}
+                                                    {{$post->post}}
                                                 </p>
                                             </div>
                                             @endforeach

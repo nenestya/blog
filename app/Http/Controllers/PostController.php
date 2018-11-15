@@ -15,8 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
-        return view('front.viewpost', compact('posts'));
+       $posts=Post::all();
+       $data = array(
+           'posts'=>$posts,
+       );
+        return view('front.viewpost')->with($data);
     }
 
     /**
@@ -45,7 +48,7 @@ class PostController extends Controller
             return redirect()->route('post.index');
           }
           catch (\Exception $e) {
-            Session::flash('create_post_fail','Status gagal Ditambahkan');
+            Session::flash('create_post_fail',$e);
             return redirect()->route('post.index');
           }
     }
