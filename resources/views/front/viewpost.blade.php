@@ -2,7 +2,7 @@
 @section('content')
 <div class="containe">
     <div class="container-fluid">
-        <h2>Selamat Datang Nestya</h2>
+        <h2>Selamat Datang  {{ Auth::user()->name }}</h2>
         <br>
         <div class="row">
                         <section class="our_project_area">
