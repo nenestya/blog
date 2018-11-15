@@ -35,19 +35,32 @@
                                             
                                             <div class="card">
                                                     <div class="card-header">
-                                                      Quote
+                                                        <div class="row">
+                                                            <div class="col-md-10">
+                                                                    {{$post->user}}
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                              @if($post->user == Auth::user()->name)
+                                                                can edit
+                                                                @else
+                                                                can view
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                            
                                                     </div>
                                                     <div class="card-body">
                                                       <blockquote class="blockquote mb-0">
                                                             {{$post->post}}
-                                                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                                            <br><br><br>
+                                                        <footer class="blockquote-footer">Create At <cite title="Source Title">{{$post->created_at}}</cite></footer>
                                                       </blockquote>
                                                     </div>
                                                   </div>
                                             <br><br>
                                         
                                             <div class="col-md-12">
-                                                <span style="font-size: 25px;font-weight: bold">21 Comment</span>
+                                                <span style="font-size: 17px;font-weight: bold">Comment</span>
                                                 <div class="row">
                                                     <div class="col-md-4 col-sm-4 col-xs-4">
                                                         <img src="{{asset('img/blog/lates_post.png')}}" alt="" srcset="" style="max-width:100%;">
