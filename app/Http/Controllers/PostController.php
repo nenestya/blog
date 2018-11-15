@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Session;
@@ -42,13 +42,21 @@ class PostController extends Controller
     public function store(Request $request)
     {
         try {
-            $input = $request->all();
-            Post::create($input);
+            $post = new post();
+            $post->user = Auth::user()->name;
+            $post->post = $request->get('post');
+            //$post->post = "d";
+            $post->created_at = now();
+	    	$post->updated_at = now();
+            $post->save();
+            
+            /*$input = $request->all();
+            Post::create($input);*/
             Session::flash('create_post_success','Status Berhasil Ditambahkan');
             return redirect()->route('post.index');
           }
-          catch (\Exception $e) {
-            Session::flash('create_post_fail','Status gagal Ditambahkan');
+          catch (Exception $e) {
+            Session::flash('create_post_fail','Gagal');
             return redirect()->route('post.index');
           }
     }

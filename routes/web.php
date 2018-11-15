@@ -20,10 +20,11 @@ Route::get('/', function () {
 // Route::get('/daftar', function () {
 //     return view('login.daftar');
 // });
-Route::get('/home', function () {
+/*Route::get('/home', function () {
     return view('front.viewpost');
-});
+});*/
+
 Route::resource('/post','PostController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/home', 'PostController');
