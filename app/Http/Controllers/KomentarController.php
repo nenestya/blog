@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Auth;
-use App\Post;
 use App\Komentar;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Session;
 
-class PostController extends Controller
+class KomentarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-      
-       $komentars=Komentar::all();
-       $posts=Post::all();
-        $posts = Post::orderBy('created_at', 'DESC')->get();
-       $data = array(
-           'posts'=>$posts,
-       );
-        return view('front.viewpost',compact('komentars'))->with($data);
+        //
     }
 
     /**
@@ -33,8 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('front.viewpost');
-        
+        //
     }
 
     /**
@@ -45,25 +38,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $post = new post();
-            $post->user = Auth::user()->name;
-            $post->post = $request->get('post');
-            $post->created_at = now();
-	    	$post->updated_at = now();
-            $post->save();
-            
-            /*$input = $request->all();
-            Post::create($input);*/
-            Session::flash('create_post_success','Status Berhasil Ditambahkan');
+       
+        try{
+            $komentar = $request->all();
+            Komentar::create($komentar);
             return redirect()->route('post.index');
-          }
-          catch (Exception $e) {
-            Session::flash('create_post_fail','Gagal');
-            return redirect()->route('post.index');
-          }
+        }catch(Exception $e){
+                return redirect()->route('post.index');
+        }
     }
-
     /**
      * Display the specified resource.
      *
@@ -96,11 +79,11 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $komentars=Komentar::all();
-      
-        $ubah=Post::FindOrFail($id);
-        $ubah->update($input);
+        
         $posts=Post::all();
+        $ubah=Komentar::FindOrFail($id);
+        $ubah->update($input);
+        $komentars=Komentar::all();
         return view('front.viewpost', compact('komentars','posts'));
     }
 
@@ -112,10 +95,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        return $id;
-        // $post->delete();
-  
-        // return redirect()->route('backend.lihatprojek')
-        //                 ->with('success','project deleted successfully');
+        //
     }
 }
