@@ -29,4 +29,5 @@ Auth::routes();
 Route::resource('/post/komentar','KomentarController');
 // Route::get('post/komentar/post/{id}', ['as' => 'komentar_post.komentar', 'uses' => 'KomentarController@komentar']);
 Route::resource('/home', 'PostController');
+Route::resource('/user', 'UserController');
 

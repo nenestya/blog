@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css_back/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -61,9 +62,17 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('user.index',Auth::user()->id) }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('user-form').submit();">
+                                        {{ __('Profile') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
+                                    </form>
+                                    <form id="user-form" action="{{ route('user.index') }}" method="POST" style="display: none;">
+                                            @csrf
                                     </form>
                                 </div>
                             </li>
