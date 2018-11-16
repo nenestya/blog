@@ -68,7 +68,8 @@ class UserController extends Controller
             'post'=>$posts,
             'user'=>$user,
         );
-        return redirect('home');
+        
+        return view('home');
         // ->with('success', ['your message,here']); 
     }
 

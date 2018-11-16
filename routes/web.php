@@ -32,4 +32,4 @@ Route::resource('/home', 'PostController');
 Route::resource('/user', 'UserController');
 
 Route::post('user/{id}', ['as' => 'user.index', 'uses' => 'UserController@index']);
-Route::post('user/img/{id}', ['as' => 'user.img', 'uses' => 'UserController@img']);
+Route::post('user/img/{id}', ['name' => 'user.img', 'uses' => 'UserController@img']);
