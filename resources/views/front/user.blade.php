@@ -90,7 +90,6 @@
                                             <footer class="blockquote-footer">Create At <cite title="Source Title">{{$post->created_at}}</cite></footer>
                                             </blockquote>
                                     </div>
-                                        
                                     </div>
                                     @endforeach
                             </div>
