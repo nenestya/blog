@@ -11,16 +11,24 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
+                            @if($users->photo!=null)
                             <img src={{asset('images/'.$users->photo->photo)}} alt=""/>
+                            @else
+                            <i class="fa fa-user" style="font-size:24px"></i>
+                            @endif
                             {{-- {{$users->photo->photo}} --}}
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
-                                
                                 <div class="form-group">
                                         {!! Form::file('photo_id',null, ['class'=>'form-control']) !!}
                                     </div>
                             </div>
                         </div>
+                        <div class="col-md-16" style="text-align:center">
+                                <div class="form-group">
+                                    {!! Form::submit('Change Photo',['class'=>'profile-edit-btn']) !!}
+                                </div>
+                            </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
