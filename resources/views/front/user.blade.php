@@ -7,14 +7,18 @@
 
 
 <div class="container emp-profile">
-            <form method="post">
+        {!! Form::open(['method'=>'POST','action'=>['UserController@img',$users->id],'files'=>'true']) !!}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src={{asset('images/'.$users->photo->photo)}} alt=""/>
+                            {{-- {{$users->photo->photo}} --}}
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
-                                <input type="file" name="file"/>
+                                
+                                <div class="form-group">
+                                        {!! Form::file('photo_id',null, ['class'=>'form-control']) !!}
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -34,7 +38,9 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <div class="form-group">
+                            {!! Form::submit('Edit Profile',['class'=>'profile-edit-btn']) !!}
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -96,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-            </form>           
+            {!! Form::close() !!}         
         </div>
 
 @endsection

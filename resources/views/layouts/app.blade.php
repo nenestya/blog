@@ -71,7 +71,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <form id="user-form" action="{{ route('user.index') }}" method="POST" style="display: none;">
+                                    <form id="user-form" action="{{ route('user.index',Auth::user()->id) }}" method="POST" style="display: none;">
                                             @csrf
                                     </form>
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Post;
+use App\Photo;
 use Illuminate\Http\Request;
 use Auth;
 class UserController extends Controller
@@ -12,9 +13,9 @@ class UserController extends Controller
      *D
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $users=User::all();
+        $users=User::findOrFail($id);
         $posts=Post::all();
         $posts=Post::where('user', Auth::user()->name)->get();
         $data=array(
@@ -45,6 +46,30 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        return "oke";
+    }
+    public function img(Request $request,$id)
+    {
+        //
+        $user = User::findOrFail($id);
+        $input = $request->all();
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images',$name);
+            $photo = Photo::create(['photo'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+        $user->update($input);
+        $posts=Post::all();
+        $data=array(
+            'useraktif'=>Auth::user()->id,
+            'nama'=>Auth::user()->name,
+            'email'=>Auth::user()->email,
+            'post'=>$posts,
+            'user'=>$user,
+        );
+        return redirect('home');
+        // ->with('success', ['your message,here']); 
     }
 
     /**
