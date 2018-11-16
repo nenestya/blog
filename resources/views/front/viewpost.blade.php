@@ -37,10 +37,18 @@
                                         <div class="col-md-2">
                                             @if($post->user == Auth::user()->name)
                                             <div style="float: right;">
-                                                    <i id="open" onclick="$('#{{$post->id}}').css('display','block');" class="fa fa-edit" style="font-size:24px"></i>
-                                            <a href="{{route('post.destroy',$post->id)}}">
-                                                    <i class="fa fa-trash" style="font-size:24px"></i></a>
+                                                <i id="open" onclick="$('#{{$post->id}}').css('display','block');" class="fa fa-edit" style="font-size:24px"></i>
+                                                {!! Form::close() !!}
+                                                {!! Form::open(['method' => 'DELETE', 'action' => ['PostController@destroy', $post->id],'id'=>'delete']) !!}
+                                    
+                                                    <div class="form-group">
+                                                        <i class="fa fa-trash" style="font-size:24px" onclick="event.preventDefault();document.getElementById('delete').submit();"></i>
                                                     </div>
+                                    
+                                                {!! Form::close() !!}
+                                                    {{-- <a href="{{route('post.destroy',$post->id)}}">
+                                                    <i class="fa fa-trash" style="font-size:24px"></i></a> --}}
+                                            </div>
                                             @endif
                                         </div>
                                         <div class="col-md-12" style="display:none" id="{{$post->id}}">

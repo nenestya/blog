@@ -112,7 +112,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        return $id;
+        try {
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('home');
+        }catch (Exception $e) {
+            
+        }
         // $post->delete();
   
         // return redirect()->route('backend.lihatprojek')
