@@ -19,7 +19,7 @@ class PostController extends Controller
       
        $komentars=Komentar::all();
        $posts=Post::all();
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+       $posts = Post::orderBy('created_at', 'DESC')->get();
        $data = array(
            'posts'=>$posts,
        );

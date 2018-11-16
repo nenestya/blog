@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Post;
 use Illuminate\Http\Request;
 use Auth;
 class UserController extends Controller
@@ -14,10 +15,15 @@ class UserController extends Controller
     public function index()
     {
         $users=User::all();
+        $posts=Post::all();
+        $posts=Post::where('user', Auth::user()->name)->get();
         $data=array(
             'useraktif'=>Auth::user()->id,
+            'nama'=>Auth::user()->name,
+            'email'=>Auth::user()->email,
+            'post'=>$posts,
         );
-        return view('front.user',compact('users'))->with($data);
+        return view('front.user',compact('users','posts'))->with($data);
     }
 
     /**
