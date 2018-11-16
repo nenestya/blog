@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
-
+use Auth;
 class UserController extends Controller
 {
     /**
@@ -14,7 +14,10 @@ class UserController extends Controller
     public function index()
     {
         $users=User::all();
-        return view('front.user',compact('users'));
+        $data=array(
+            'useraktif'=>Auth::user()->id,
+        );
+        return view('front.user',compact('users'))->with($data);
     }
 
     /**
